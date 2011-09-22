@@ -56,3 +56,8 @@ Instalação e Configuração:
 --------------------------
 
 Veja na documentação: [http://nanoMax.klaussantana.com/#Documentacao](http://nanoMax.klaussantana.com/#Documentacao)
+
+Contato:
+--------
+
+Para entrar em contato, envie um email para [falecom@klaussantana.com](mailto:falecom@klaussantana.com).

@@ -372,18 +372,22 @@ class nanoMax
 	/**
 	 * Singleton
 	 *
-	 * Cria o objeto Singleton, caso ainda não tenha sido criado, e o retorna.
+	 * Por padrão, GetInstance() retorna o objeto Singleton da biblioteca nanoMax,
+	 * caso exista, ou o cria.
+	 *
+	 * Se for especificado o parâmetro $Library, então a instância armazenada
+	 * em nanoMax de $Library será retornada.
 	 *
 	 * Este método pode ser sobrecarregado.
 	 *
 	 * @static
 	 * @access   public
-	 * @param    string   $Buffer   String contendo a pilha de saída não tratada.
-	 * @return   string             String contendo a pilha de saída tratada.
+	 * @param    string   $Library   (Opcional) A instância da biblioteca que será retornada
+	 * @return   string              Instância de $Library solicitada.
 	 **/
 	static
 	private
-	function GetInstance()
+	function GetInstance( $Library ='nanoMax' )
 	{
 		// Cria uma instância do objeto caso não exista
 		if ( ! static::$Instance instanceof static )
@@ -391,8 +395,28 @@ class nanoMax
 			static::$Instance = new static;
 		}
 		
-		// Retorna a instância Singleton
-		return static::$Instance;
+		// Prepara $Library para ser procurada
+		$Library = strtolower($Library);
+		
+		// Retorna a instância desejada
+		if ( $Library == 'nanoMax' )
+		{
+			return static::$Instance;
+		}
+		
+		else {
+			if ( isset(static::$RegisteredObjects[$Library]) && (static::$RegisteredObjects[$Library] instanceof $Library) )
+			{
+				return static::$RegisteredObjects[$Library];
+			}
+			
+			else
+			{
+				throw new Exception("A instância de '{$Library}' não existe em nanoMax.");
+			}
+		}
+		
+		echo '<pre>' .print_r($a, true) .'</pre>';
 	}
 	
 	

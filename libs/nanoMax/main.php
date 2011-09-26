@@ -33,7 +33,7 @@
  * @category     Library-Aggregator
  * @author       Klauss Sant'Ana Guimarães
  * @copyright    Copyright (c) klaussantana.com
- * @license      http://nanoMax.klaussantana.com/#Licenciamento
+ * @license      http://www.gnu.org/licenses/lgpl.html LGPL - LESSER GENERAL PUBLIC LICENSE
  * @link         http://nanoMax.klaussantana.com
  * @version      0.1-dev
  * @filesource   

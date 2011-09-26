@@ -415,8 +415,6 @@ class nanoMax
 				throw new Exception("A instância de '{$Library}' não existe em nanoMax.");
 			}
 		}
-		
-		echo '<pre>' .print_r($a, true) .'</pre>';
 	}
 	
 	

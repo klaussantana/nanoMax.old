@@ -404,7 +404,7 @@ class nanoMax
 		$Library = strtolower($Library);
 		
 		// Retorna a instância desejada
-		if ( $Library == 'nanoMax' )
+		if ( $Library == 'nanomax' )
 		{
 			return static::$Instance;
 		}
@@ -451,7 +451,7 @@ class nanoMax
 			// Dispara um erro se esta classe não possuir o método
 			if ( !in_array($Method, get_class_methods(get_called_class())) )
 			{
-				throw new Exception('Método não existe.', self::ERR_METHOD_DONT_EXISTS);
+				throw new Exception('Método não existe.');
 			}
 			
 			// Invoca o método caso exista

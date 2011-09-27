@@ -293,7 +293,12 @@ class nanoMax
 		{
 			// Importa a biblioteca
 			static::$ReflectionObjects[$class] = new ReflectionClass($Class);
-			static::$RegisteredObjects[$class] = static::$ReflectionObjects[$class]->newInstanceArgs($ARGS);
+			
+			// Instancia a biblioteca internamente se possível
+			if ( static::$ReflectionObjects[$class]->isInstantiable() )
+			{
+				static::$RegisteredObjects[$class] = static::$ReflectionObjects[$class]->newInstanceArgs($ARGS);
+			}
 			
 			// Importa as propriedades
 			foreach ( static::$ReflectionObjects[$class]->getProperties() as $Property )

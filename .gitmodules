@@ -1,0 +1,3 @@
+[submodule "libs/nmGear"]
+	path = libs/nmGear
+	url = git://github.com/klaussantana/nmGear.git

@@ -313,7 +313,8 @@ class nanoMax
 			// Importa os métodos
 			foreach ( static::$ReflectionObjects[$class]->getMethods() as $Method )
 			{
-				if ( $Method->isPublic() )
+				// Previne importação de métodos não públicos, abstratos, construtores ou destrutores ou combinações dessas condições
+				if ( $Method->isPublic() && !$Method->isAbstract() && !$Method->isConstructor() && !$Method->isDestructor() )
 				{
 					if ( $Overload || !isset(static::$RegisteredMethods[strtolower($Method->name)]) )
 					{
@@ -409,7 +410,8 @@ class nanoMax
 			return static::$Instance;
 		}
 		
-		else {
+		else
+		{
 			if ( isset(static::$RegisteredObjects[$Library]) && (static::$RegisteredObjects[$Library] instanceof $Library) )
 			{
 				return static::$RegisteredObjects[$Library];

@@ -346,7 +346,10 @@ class nanoMax
 	private
 	function Trace()
 	{
-		static::$Trace[] = func_get_args();
+		if ( func_get_args() )
+		{
+			static::$Trace[] = func_get_args();
+		}
 		
 		return static::$Trace;
 	}

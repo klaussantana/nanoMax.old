@@ -120,8 +120,13 @@ set_exception_handler( array('nanoMax', 'Trace') );
 
 /**
  * Registra o framework para carregar automaticamente bibliotecas
+ *
+ * Obs.: `spl_autoload_register()` causa erro fatal por motivos ainda
+ * desconhecidos. A função mágica `__autoload()` atende à demanda sem
+ * erros nem lentidão.
  **/
-spl_autoload_register( array('nanoMax', 'Autoload') );
+function __autoload( $Library ) { nanoMax::Autoload($Library); }
+
 
 /**
  * Apaga variáveis desnecessárias para o restante do programa

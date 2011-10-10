@@ -53,7 +53,7 @@ $NM_DIR ->core   = $NM_DIR->root .DS .'core';    // Núcleo do framework
 $NM_DIR ->libs   = $NM_DIR->root .DS .'libs';    // Bibliotecas
 $NM_DIR ->pub    = $NM_DIR->root .DS .'pub';     // Arquivos públicos (html,gif,jpg,etc...)
 $NM_DIR ->tmp    = $NM_DIR->root .DS .'tmp';     // Arquivos temporários (uploads,etc...)
-$NM_DIR ->var    = $NM_DIR->root .DS .'var';     // Arquivos variáveis (configurações,etc...)
+$NM_DIR ->var    = $NM_DIR->root .DS .'var';     // Arquivos variáveis (configurações,logs,etc...)
 $NM_DIR ->shared = $NM_DIR->apps .DS .'.shared'; // Objetos compartilhados
 
 /**
@@ -115,9 +115,8 @@ else
 /**
  * Registra os controladores de erro para o framework
  **/
-$ErrorHandler = array('nanoMax', 'Trace');
-set_error_handler( $ErrorHandler );
-set_exception_handler( $ErrorHandler );
+set_error_handler( array('nanoMax', 'Trace') );
+set_exception_handler( array('nanoMax', 'Trace') );
 
 /**
  * Registra o framework para carregar automaticamente bibliotecas
@@ -125,7 +124,7 @@ set_exception_handler( $ErrorHandler );
 spl_autoload_register( array('nanoMax', 'Autoload') );
 
 /**
- * Apagando variáveis desnecessárias para o resto da aplicação para evitar conflitos
+ * Apaga variáveis desnecessárias para o restante do programa
  **/
 unset($Directory, $Creation, $Protection, $nanoMax, $ErrorHandler);
 

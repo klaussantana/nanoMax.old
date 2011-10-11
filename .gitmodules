@@ -4,3 +4,6 @@
 [submodule "libs/nmBrowscap"]
 	path = libs/nmBrowscap
 	url = git://github.com/klaussantana/nmBrowscap.git
+[submodule "libs/nmOutputTarget"]
+	path = libs/nmOutputTarget
+	url = git@github.com:klaussantana/nmOutputTarget.git

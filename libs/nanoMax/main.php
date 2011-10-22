@@ -571,7 +571,7 @@ class nanoMax
 	 * @static
 	 * @access   public
 	 * @param    string   $Property   A propriedade que receberá $Value
-	 * @return   mixed|null           Retorna o valor da propriedade ou nulo em caso de falha
+	 * @return   mixed                Retorna o valor da propriedade ou nulo em caso de falha
 	 * @see      nanoMax::Assembly()
 	 **/
 	public
@@ -606,6 +606,25 @@ class nanoMax
 	}
 	
 	/**
+	 * Método Mágico para verificar se determinada propriedade existe.
+	 * 
+	 * Este método é acionado sempre que houver tentativa de verificação da
+	 * existência de uma propriedade.
+	 * 
+	 * @static
+	 * @access   public
+	 * @param    string   $Property   A propriedade a ser pesquisada
+	 * @return   bool                 Se foi encontrada ou não
+	 **/
+	public
+	function __isset( $Property )
+	{
+		$property = strtolower($Property);
+		
+		return isset( static::$RegisteredProperties[$property] );
+	}
+	
+	/**
 	 * Método para associar valores às propriedades
 	 * 
 	 * Este método é um atalho para __set().
@@ -626,7 +645,7 @@ class nanoMax
 	}
 	
 	/**
-	 * Método Mágico para adquirir valores às propriedades
+	 * Método para adquirir valores às propriedades
 	 * 
 	 * Este método é um atalho para __get().
 	 *
@@ -635,7 +654,7 @@ class nanoMax
 	 * @static
 	 * @access   public
 	 * @param    string   $Property   A propriedade que receberá $Value
-	 * @return   mixed|null           Retorna o valor da propriedade ou nulo em caso de falha
+	 * @return   mixed                Retorna o valor da propriedade ou nulo em caso de falha
 	 * @see      nanoMax::Assembly()
 	 **/
 	static
@@ -643,6 +662,46 @@ class nanoMax
 	function GetProperty( $Property )
 	{
 		return static::GetInstance()->__get( $Property );
+	}
+	
+	/**
+	 * Método para verificar se determinada propriedade existe.
+	 * 
+	 * Este método é um atalho para __isset().
+	 * 
+	 * Este método pode ser sobrecarregado.
+	 * 
+	 * @static
+	 * @access   public
+	 * @param    string   $Property   A propriedade a ser pesquisada
+	 * @return   bool                 Se foi encontrada ou não
+	 * @see      nanoMax::Assembly()
+	 **/
+	static
+	private
+	function HasProperty( $Property )
+	{
+		return static::GetInstance()->__isset( $Property );
+	}
+	
+	/**
+	 * Método para verificar se determinada propriedade existe.
+	 * 
+	 * Este método é um atalho para __isset().
+	 * 
+	 * Este método pode ser sobrecarregado.
+	 * 
+	 * @static
+	 * @access   public
+	 * @param    string   $Property   A propriedade a ser pesquisada
+	 * @return   bool                 Se foi encontrada ou não
+	 * @see      nanoMax::Assembly()
+	 **/
+	static
+	private
+	function HaveProperty( $Property )
+	{
+		return static::GetInstance()->__isset( $Property );
 	}
 }
 
